@@ -1,0 +1,21 @@
+syntax = "proto3";
+package grpc;
+
+option go_package = "github.com/femibiwoye/image-upload-service;grpc";
+
+// The service definition.
+service ImageUploader {
+    // Uploading an image
+    rpc Upload (Image) returns (ImageUploadReply) {}
+  }
+  
+  // The request message containing the image name and data
+  message Image {
+    string name = 1;
+    bytes body  = 2;
+  }
+  
+  // The response message confirming if the image is saved and the location
+  message ImageUploadReply {
+    string location = 1;
+  }
